@@ -4,7 +4,6 @@
 /node_modules
 /build
 /dist
-/release
 /tpd
 yarn.lock
 package-lock.json
