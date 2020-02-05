@@ -1,0 +1,60 @@
+{
+  "name": "tpss-electron",
+  "description": "Tech Prastish Software Solutions Pvt. Ltd.",
+  "author": {
+    "name": "Ram karan",
+    "email": "ramkarantpss@gmail.com"
+  },
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "cross-env": "6.0.2",
+    "electron-clipboard-extended": "^1.1.1",
+    "electron-is-dev": "1.1.0",
+    "electron-log": "^3.0.8",
+    "electron-updater": "^4.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "update-electron-app": "^1.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "electron": "^7.1.10",
+    "electron-builder": "^22.3.2",
+    "wait-on": "^4.0.0",
+    "prettier": "^1.4.4",
+    "react-scripts": "3.1.2"
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-local": "electron .",
+    "electron-linux": "npm run build && electron-builder build --linux",
+    "electron-windows": "npm run build && electron-builder build --windows",
+    "electron-mac": "npm run build && electron-builder build --mac",
+    "electron-all": "electron-builder -mwl",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "build --em.main=build/electron.js",
+    "electron-installer": "electron-installer-debian --src release/linux-unpacked --dest dist/installers/ --arch amd64"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/officialtpss/tpss-electron.git"
+  }
+}

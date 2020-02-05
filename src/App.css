@@ -1,0 +1,71 @@
+.App {
+  text-align: center;
+  background-color: #222222;
+  height: 600px;
+  width: 350px;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 5s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+  flex-direction: column;
+
+}
+
+.topBtn {
+  height: 18px;
+  width: 18px;
+  background-color: red;
+  border-radius: 18px;
+  padding: 0;
+  border: none;
+  margin: 0 2px;
+  transition: all .25s ease;
+  color: #fff;
+  font-size: 12px;
+  line-height: 12px;
+}
+.topBtn:hover, .topBtn:focus, .topBtn:active {
+  opacity: .7;
+  outline: none;
+}
+
+
+.header {
+  padding-right: 5px;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+}
+.regbtn {
+  background-color: green;
+}
+.greenbtn  {
+  background-color: red;
+}
+.headerTitle {
+  -webkit-app-region: drag;
+  flex: 1;
+  padding: 5px;
+  font-size: 14px;
+  color: #333;
+  line-height: 14px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
