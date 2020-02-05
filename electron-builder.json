@@ -38,8 +38,10 @@
     "license": "lincense.txt",
     "shortcutName": "tpss-electron"
   },
-  "publish": {
-    "provider": "github",
-    "token": "token"
-  }
+    "publish": [
+      {
+
+      }
+    ]
+
 }

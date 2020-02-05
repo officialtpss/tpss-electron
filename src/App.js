@@ -67,6 +67,7 @@ class App extends Component {
                     <h2>React + Electron = <span role="img" aria-label="love">😍</span></h2>
                 </div>
                 <p className="App-intro">
+                    <b> Second Version </b><br/>
                     <b> Copy Any Data </b><br/>
                     <b> 😍 </b><br/>
                     <b> {mClipBoardData} </b><br/>
