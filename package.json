@@ -33,8 +33,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron-local": "electron .",
-    "createVersionfile": "cd release/linux-unpacked && echo 7.05 version.txt",
-
     "electron-windows": "npm run build && electron-builder build --windows",
     "electron-mac": "npm run build && electron-builder build --mac",
     "electron-all": "electron-builder -mwl",
