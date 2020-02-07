@@ -12,19 +12,22 @@ class App extends Component {
         this.state = {
             mClipBoardData: '',
             upDateInfo: '',
+            progressObj: null,
         }
         this.startWatchingClipBoardData();
     }
 
     checkforUpdate=()=>{
-        app.ipcRenderer.on('message',(upDateInfo)=>{
-            this.setState({upDateInfo})
+        app.ipcRenderer.on('message',(event,upDateInfo,progressObj)=>{
+            this.setState({upDateInfo,progressObj})
         })
+    }
+    componentDidMount() {
+        this.checkforUpdate()
     }
 
     componentWillUnmount() {
         this.stopWatchingClipBoardData();
-        this.checkforUpdate();
     }
 
     stopWatchingClipBoardData = () => {
@@ -50,6 +53,31 @@ class App extends Component {
             app.remote.getCurrentWindow().close()
     }
 
+     formatBytes(bytes, decimals = 2) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const dm = decimals < 0 ? 0 : decimals;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    }
+    onDownloadProgress=()=>{
+        let {progressObj}=this.state
+        if(progressObj!==null && progressObj!==undefined){
+            return(
+                <div>
+                    <b>Download speed:  {this.formatBytes(progressObj.bytesPerSecond)} /sec </b><br/>
+                    <b>Downloaded :  {Math.round(progressObj.percent)} %</b><br/>
+                    <b>Transferred :  {this.formatBytes(progressObj.transferred)} </b><br/>
+                    <b>Total :  {this.formatBytes(progressObj.total)} </b><br/>
+
+                </div>
+
+            )
+        }
+
+    }
+
 
     render() {
         let {mClipBoardData,upDateInfo} = this.state
@@ -71,7 +99,9 @@ class App extends Component {
                     <b> Copy Any Data </b><br/>
                     <b> 😍 </b><br/>
                     <b> {mClipBoardData} </b><br/>
-                    <b>Update info {upDateInfo} </b><br/>
+                    <b> {upDateInfo} </b><br/><br/><br/>
+
+                    {this.onDownloadProgress()}
                 </p>
             </div>
         );

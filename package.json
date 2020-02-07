@@ -5,7 +5,7 @@
     "name": "Ram karan",
     "email": "ramkarantpss@gmail.com"
   },
-  "version": "0.0.1",
+  "version": "0.0.4",
   "private": true,
   "dependencies": {
     "cross-env": "6.0.2",
@@ -33,6 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron-local": "electron .",
+    "createVersionfile": "cd release/linux-unpacked && echo 7.05 version.txt",
 
     "electron-windows": "npm run build && electron-builder build --windows",
     "electron-mac": "npm run build && electron-builder build --mac",
@@ -41,8 +42,8 @@
     "electron-pack": "build --em.main=build/electron.js",
 
 
-    "electron-installer-linux": "electron-installer-debian --src release/linux-unpacked --dest dist/installers/ --arch amd64",
     "electron-linux": "npm run build && electron-builder build --linux --config electron-builder.json",
+    "electron-installer-linux": "electron-installer-debian --src release/linux-unpacked --dest release/installers/ --arch amd64",
     "electron-linux-publish": "npm run build && electron-builder build --linux --config electron-builder.json --publish always"
   },
   "browserslist": {

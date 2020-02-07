@@ -2,7 +2,6 @@
   "appId": "com.example.ElectronAutoUpdate",
   "productName": "tpss-electron",
   "directories": {
-    "buildResources": "build",
     "output": "release/"
   },
   "files": [
@@ -11,7 +10,7 @@
 
   ],
   "win": {
-    "icon": "./build/assets/icons/icon.png",
+    "icon": "./build/assets/icons/icon256.png",
     "target": [
       {
         "target": "nsis"
@@ -20,13 +19,14 @@
   },
   "mac": {
     "icon": "./build/assets/icons/icon.png",
-    "category": "Music.app",
+    "category": "Utility",
     "target": [
       "dmg"
     ]
   },
   "linux": {
     "icon": "./build/assets/icons/icon.png",
+    "category": "Utility",
     "target": [
       "AppImage"
     ]
@@ -40,7 +40,11 @@
   },
     "publish": [
       {
+        "url" : "git@github.com:officialtpss/tpss-electron.git",
+        "provider": "github",
 
+        "owner": "OfficialTpss",
+        "repo": "tpss-electron"
       }
     ]
 

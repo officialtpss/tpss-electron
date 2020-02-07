@@ -1,0 +1,13 @@
+{
+  "dest": "dist/installers/",
+  "icon": {
+    "48x48": "public/assets/icons/icon64.png",
+    "64x64": "public/assets/icons/icon64.png",
+    "128x128": "public/assets/icons/icon128.png",
+    "256x256": "public/assets/icons/icon256.png",
+    "scalable": "public/assets/icons/icon.svg"
+  },
+  "tags": [
+    "Utility"
+  ]
+}

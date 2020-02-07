@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu, Tray} = require('electron');
+const {app, BrowserWindow, Menu, Tray,ipcMain} = require('electron');
 const isDev = require('electron-is-dev');
 const path = require("path");
 const url = require("url");
@@ -9,7 +9,7 @@ const IconPathProduction = path.join(__dirname, './assets/icons/icon.png');
 const IconPathStaging = path.join(__dirname, './assets/icons/icon.png');
 const LoadUrlLocal = "http://localhost:3000";
 
-
+//https://github.com/officialtpss/tpss-electron/releases
 const LoadUrlLocalProduction = url.format({
     pathname: path.join(__dirname, '../build/index.html'),
     protocol: 'file:',
@@ -63,7 +63,7 @@ function createTrayIcon() {
         {
             label: 'Minimized',
             click: () => {
-                mainWindow.minimize()
+                  mainWindow.minimize()
             }
         }
         ,
@@ -119,8 +119,8 @@ function createWindow() {
 
 
 app.on('ready', () => {
-    autoUpdater.checkForUpdatesAndNotify();
     createWindow()
+    autoUpdater.checkForUpdatesAndNotify();
 });
 
 app.on("window-all-closed", () => {
@@ -138,9 +138,9 @@ app.on("activate", () => {
 
 /////////Auto Updater for app////////
 
-function sendStatusToWindow(text) {
-    log.info(text);
-    mainWindow.webContents.send('message', text);
+function sendStatusToWindow(text,progressObj=null) {
+  //  log.info(text);
+    mainWindow.webContents.send('message', text,progressObj);
 }
 
 autoUpdater.on('checking-for-update', () => {
@@ -159,8 +159,12 @@ autoUpdater.on('download-progress', (progressObj) => {
     let log_message = "Download speed: " + progressObj.bytesPerSecond;
     log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
     log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
-    sendStatusToWindow(log_message);
+    sendStatusToWindow(log_message,progressObj);
 })
 autoUpdater.on('update-downloaded', (info) => {
     sendStatusToWindow('Update downloaded');
+    autoUpdater.quitAndInstall()
+});
+ipcMain.on('restart_app', () => {
+    autoUpdater.quitAndInstall();
 });
