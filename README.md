@@ -1,12 +1,12 @@
 # React Electron
 
-An example of Electron + React
+A simple example of Electron + React
 
 ## How to Run
 
-1:simply clone or download project 
+1:Clone or download project 
 
-2:install node via npm install
+2:Install node via npm install
 
 
 ## Contributing
